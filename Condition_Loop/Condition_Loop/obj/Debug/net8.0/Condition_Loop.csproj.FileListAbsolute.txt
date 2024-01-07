@@ -1,0 +1,14 @@
+D:\DEV\DotNet\Condition_Loop\Condition_Loop\bin\Debug\net8.0\Condition_Loop.exe
+D:\DEV\DotNet\Condition_Loop\Condition_Loop\bin\Debug\net8.0\Condition_Loop.deps.json
+D:\DEV\DotNet\Condition_Loop\Condition_Loop\bin\Debug\net8.0\Condition_Loop.runtimeconfig.json
+D:\DEV\DotNet\Condition_Loop\Condition_Loop\bin\Debug\net8.0\Condition_Loop.dll
+D:\DEV\DotNet\Condition_Loop\Condition_Loop\bin\Debug\net8.0\Condition_Loop.pdb
+D:\DEV\DotNet\Condition_Loop\Condition_Loop\obj\Debug\net8.0\Condition_Loop.GeneratedMSBuildEditorConfig.editorconfig
+D:\DEV\DotNet\Condition_Loop\Condition_Loop\obj\Debug\net8.0\Condition_Loop.AssemblyInfoInputs.cache
+D:\DEV\DotNet\Condition_Loop\Condition_Loop\obj\Debug\net8.0\Condition_Loop.AssemblyInfo.cs
+D:\DEV\DotNet\Condition_Loop\Condition_Loop\obj\Debug\net8.0\Condition_Loop.csproj.CoreCompileInputs.cache
+D:\DEV\DotNet\Condition_Loop\Condition_Loop\obj\Debug\net8.0\Condition_Loop.dll
+D:\DEV\DotNet\Condition_Loop\Condition_Loop\obj\Debug\net8.0\refint\Condition_Loop.dll
+D:\DEV\DotNet\Condition_Loop\Condition_Loop\obj\Debug\net8.0\Condition_Loop.pdb
+D:\DEV\DotNet\Condition_Loop\Condition_Loop\obj\Debug\net8.0\Condition_Loop.genruntimeconfig.cache
+D:\DEV\DotNet\Condition_Loop\Condition_Loop\obj\Debug\net8.0\ref\Condition_Loop.dll

@@ -1,0 +1,14 @@
+D:\DEV\DotNet\HelloWorld\HelloWorldExplicit\bin\Debug\net8.0\HelloWorldExplicit.exe
+D:\DEV\DotNet\HelloWorld\HelloWorldExplicit\bin\Debug\net8.0\HelloWorldExplicit.deps.json
+D:\DEV\DotNet\HelloWorld\HelloWorldExplicit\bin\Debug\net8.0\HelloWorldExplicit.runtimeconfig.json
+D:\DEV\DotNet\HelloWorld\HelloWorldExplicit\bin\Debug\net8.0\HelloWorldExplicit.dll
+D:\DEV\DotNet\HelloWorld\HelloWorldExplicit\bin\Debug\net8.0\HelloWorldExplicit.pdb
+D:\DEV\DotNet\HelloWorld\HelloWorldExplicit\obj\Debug\net8.0\HelloWorldExplicit.GeneratedMSBuildEditorConfig.editorconfig
+D:\DEV\DotNet\HelloWorld\HelloWorldExplicit\obj\Debug\net8.0\HelloWorldExplicit.AssemblyInfoInputs.cache
+D:\DEV\DotNet\HelloWorld\HelloWorldExplicit\obj\Debug\net8.0\HelloWorldExplicit.AssemblyInfo.cs
+D:\DEV\DotNet\HelloWorld\HelloWorldExplicit\obj\Debug\net8.0\HelloWorldExplicit.csproj.CoreCompileInputs.cache
+D:\DEV\DotNet\HelloWorld\HelloWorldExplicit\obj\Debug\net8.0\HelloWorldExplicit.dll
+D:\DEV\DotNet\HelloWorld\HelloWorldExplicit\obj\Debug\net8.0\refint\HelloWorldExplicit.dll
+D:\DEV\DotNet\HelloWorld\HelloWorldExplicit\obj\Debug\net8.0\HelloWorldExplicit.pdb
+D:\DEV\DotNet\HelloWorld\HelloWorldExplicit\obj\Debug\net8.0\HelloWorldExplicit.genruntimeconfig.cache
+D:\DEV\DotNet\HelloWorld\HelloWorldExplicit\obj\Debug\net8.0\ref\HelloWorldExplicit.dll
