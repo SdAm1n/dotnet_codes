@@ -15,8 +15,10 @@ u1.Greet();
 Console.WriteLine(Math.Sum(10, 20));
 Console.WriteLine(Math.PI);
 
+decimal x = 1000;
+
 Account acc1 = new Account("Sadman");
-Account acc2 = new Account("Sadman", 1000);
+Account acc2 = new Account("Sadman",ref x);
 
 Console.WriteLine(acc1.Balance);
 Console.WriteLine(acc2.Balance);
@@ -83,7 +85,8 @@ public class Account
         Balance = 0;
     }
 
-    public Account(string owner, decimal balance)
+    // ref keyword is used to pass a variable by reference
+    public Account(string owner, ref decimal balance)
     {
         Owner = owner;
         Balance = balance;

@@ -81,5 +81,6 @@ Console.WriteLine($"Today: {DateTime.Today}, Now: {DateTime.Now}");
 // Operators
 // Five Operators: Arithmetic, Comparison, Logical, Bitwise, Assignment
 
-int a = 10;
 int b = a++;
+
+var x = 200;

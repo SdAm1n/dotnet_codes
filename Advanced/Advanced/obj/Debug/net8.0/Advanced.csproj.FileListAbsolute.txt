@@ -1,0 +1,15 @@
+D:\DEV\DotNet\Advanced\Advanced\bin\Debug\net8.0\Advanced.exe
+D:\DEV\DotNet\Advanced\Advanced\bin\Debug\net8.0\Advanced.deps.json
+D:\DEV\DotNet\Advanced\Advanced\bin\Debug\net8.0\Advanced.runtimeconfig.json
+D:\DEV\DotNet\Advanced\Advanced\bin\Debug\net8.0\Advanced.dll
+D:\DEV\DotNet\Advanced\Advanced\bin\Debug\net8.0\Advanced.pdb
+D:\DEV\DotNet\Advanced\Advanced\obj\Debug\net8.0\Advanced.GeneratedMSBuildEditorConfig.editorconfig
+D:\DEV\DotNet\Advanced\Advanced\obj\Debug\net8.0\Advanced.AssemblyInfoInputs.cache
+D:\DEV\DotNet\Advanced\Advanced\obj\Debug\net8.0\Advanced.AssemblyInfo.cs
+D:\DEV\DotNet\Advanced\Advanced\obj\Debug\net8.0\Advanced.csproj.CoreCompileInputs.cache
+D:\DEV\DotNet\Advanced\Advanced\obj\Debug\net8.0\Advanced.sourcelink.json
+D:\DEV\DotNet\Advanced\Advanced\obj\Debug\net8.0\Advanced.dll
+D:\DEV\DotNet\Advanced\Advanced\obj\Debug\net8.0\refint\Advanced.dll
+D:\DEV\DotNet\Advanced\Advanced\obj\Debug\net8.0\Advanced.pdb
+D:\DEV\DotNet\Advanced\Advanced\obj\Debug\net8.0\Advanced.genruntimeconfig.cache
+D:\DEV\DotNet\Advanced\Advanced\obj\Debug\net8.0\ref\Advanced.dll

@@ -1,0 +1,15 @@
+D:\DEV\DotNet\ArraysCollections\ArraysCollections\bin\Debug\net8.0\ArraysCollections.exe
+D:\DEV\DotNet\ArraysCollections\ArraysCollections\bin\Debug\net8.0\ArraysCollections.deps.json
+D:\DEV\DotNet\ArraysCollections\ArraysCollections\bin\Debug\net8.0\ArraysCollections.runtimeconfig.json
+D:\DEV\DotNet\ArraysCollections\ArraysCollections\bin\Debug\net8.0\ArraysCollections.dll
+D:\DEV\DotNet\ArraysCollections\ArraysCollections\bin\Debug\net8.0\ArraysCollections.pdb
+D:\DEV\DotNet\ArraysCollections\ArraysCollections\obj\Debug\net8.0\ArraysCollections.GeneratedMSBuildEditorConfig.editorconfig
+D:\DEV\DotNet\ArraysCollections\ArraysCollections\obj\Debug\net8.0\ArraysCollections.AssemblyInfoInputs.cache
+D:\DEV\DotNet\ArraysCollections\ArraysCollections\obj\Debug\net8.0\ArraysCollections.AssemblyInfo.cs
+D:\DEV\DotNet\ArraysCollections\ArraysCollections\obj\Debug\net8.0\ArraysCollections.csproj.CoreCompileInputs.cache
+D:\DEV\DotNet\ArraysCollections\ArraysCollections\obj\Debug\net8.0\ArraysCollections.sourcelink.json
+D:\DEV\DotNet\ArraysCollections\ArraysCollections\obj\Debug\net8.0\ArraysCollections.dll
+D:\DEV\DotNet\ArraysCollections\ArraysCollections\obj\Debug\net8.0\refint\ArraysCollections.dll
+D:\DEV\DotNet\ArraysCollections\ArraysCollections\obj\Debug\net8.0\ArraysCollections.pdb
+D:\DEV\DotNet\ArraysCollections\ArraysCollections\obj\Debug\net8.0\ArraysCollections.genruntimeconfig.cache
+D:\DEV\DotNet\ArraysCollections\ArraysCollections\obj\Debug\net8.0\ref\ArraysCollections.dll

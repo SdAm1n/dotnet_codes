@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP", "OOP\OOP.csproj", "{E8A65315-1C5E-4F1A-B6CA-2797F18B3659}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOP", "OOP\OOP.csproj", "{E8A65315-1C5E-4F1A-B6CA-2797F18B3659}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Namespaces", "Namespaces\Namespaces.csproj", "{EF06168F-1B81-4628-85CD-ECC89B6FDD9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Namespaces", "Namespaces\Namespaces.csproj", "{EF06168F-1B81-4628-85CD-ECC89B6FDD9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{BC7D2E88-5582-4A46-A682-62FAF7EE86A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interface", "Interface\Interface.csproj", "{BC7D2E88-5582-4A46-A682-62FAF7EE86A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inheritance", "Inheritance\Inheritance.csproj", "{E6367ABD-0DC5-4E48-B1BE-F8BA3F80A325}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inheritance", "Inheritance\Inheritance.csproj", "{E6367ABD-0DC5-4E48-B1BE-F8BA3F80A325}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polymorphism", "Polymorphism\Polymorphism.csproj", "{F81B8FBB-7BB9-4222-9156-AA265CC0789F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Polymorphism", "Polymorphism\Polymorphism.csproj", "{F81B8FBB-7BB9-4222-9156-AA265CC0789F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enum", "Enum\Enum.csproj", "{A0649C99-7161-4456-820A-7FB3C19DC50D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionHandling", "ExceptionHandling\ExceptionHandling.csproj", "{E35E8095-866E-41B1-9F6B-D06EB1451EFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{F81B8FBB-7BB9-4222-9156-AA265CC0789F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F81B8FBB-7BB9-4222-9156-AA265CC0789F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F81B8FBB-7BB9-4222-9156-AA265CC0789F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0649C99-7161-4456-820A-7FB3C19DC50D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0649C99-7161-4456-820A-7FB3C19DC50D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0649C99-7161-4456-820A-7FB3C19DC50D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0649C99-7161-4456-820A-7FB3C19DC50D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E35E8095-866E-41B1-9F6B-D06EB1451EFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E35E8095-866E-41B1-9F6B-D06EB1451EFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E35E8095-866E-41B1-9F6B-D06EB1451EFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E35E8095-866E-41B1-9F6B-D06EB1451EFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
