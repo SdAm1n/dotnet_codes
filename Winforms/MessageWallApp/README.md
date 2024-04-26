@@ -18,6 +18,7 @@
 - Controls
   - Name
   - Text
+  - TabIndex
 
 ## ListboxItem
 
@@ -83,3 +84,62 @@ this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
 - Check the EmailValidation Project
 
 ## Password Validation
+
+- same as email validation but with different regex. `(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$`
+- to hide password set property `UseSystemPasswordChar` to true.
+- To change `.` to `*` set `PasswordChar` property to*.
+
+## Textbox Validation
+
+### Digit Validation
+
+```csharp
+private void textbox1_KeyPress(object sender, KeyPressEventArgs e)
+{
+    char c = e.KeyChar;
+    if (!char.IsDigit(c) && c != 8) // c=8 is backspace
+    {
+        e.Handled = true;
+    }
+    else 
+    {
+        e.Handled = false;
+    }
+}
+```
+
+- Set property `MaxLength` to limit the number of characters.
+
+### Letter Validation
+
+```csharp
+private void textbox1_KeyPress(object sender, KeyPressEventArgs e)
+{
+    char c = e.KeyChar;
+    if (!char.IsLetter(c) && c != 8 && c != 32) // c=8 is backspace and c=32 is space
+    {
+        e.Handled = true;
+    }
+    else 
+    {
+        e.Handled = false;
+    }
+}
+```
+
+### Both
+
+```csharp
+private void textbox1_KeyPress(object sender, KeyPressEventArgs e)
+{
+    char c = e.KeyChar;
+    if (!char.IsLetterOrDigit(c) && c != 8 && c != 32) // c=8 is backspace and c=32 is space
+    {
+        e.Handled = true;
+    }
+    else 
+    {
+        e.Handled = false;
+    }
+}
+```
