@@ -70,3 +70,16 @@ this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
 - check if radio button is checked: `radiobutton1.Checked`. it returns boolean value.
 - User group box to group radio buttons.
 - change form color: `this.BackColor = System.Drawing.Color.Red;`
+
+## Error Provider
+
+- Add error provider to the form.
+- Set error message: `errorProvider1.SetError(this.textbox1, "Please enter a value");`
+- clear error message: `errorProvider1.Clear();`
+- set icon: `errorProvider1.Icon = Properties.Resources.IconName;`
+
+## Email Validation
+
+- Check the EmailValidation Project
+
+## Password Validation
