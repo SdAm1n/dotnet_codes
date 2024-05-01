@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Credentia-Backend", "Credentia-Backend\Credentia-Backend.csproj", "{0C19C27C-E77B-40C1-B40E-080809335430}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibrary", "DataAccessLibrary\DataAccessLibrary.csproj", "{64628FFF-87E7-4E29-99F6-027AAA341A38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0C19C27C-E77B-40C1-B40E-080809335430}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C19C27C-E77B-40C1-B40E-080809335430}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C19C27C-E77B-40C1-B40E-080809335430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64628FFF-87E7-4E29-99F6-027AAA341A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64628FFF-87E7-4E29-99F6-027AAA341A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64628FFF-87E7-4E29-99F6-027AAA341A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64628FFF-87E7-4E29-99F6-027AAA341A38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

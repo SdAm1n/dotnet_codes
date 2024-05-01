@@ -152,7 +152,7 @@ private void textbox1_KeyPress(object sender, KeyPressEventArgs e)
 ```json
 {
   "ConnectionStrings": {
-    "Default": "Default": "Server=127.0.0.1;Port=3306;Database=DatabaseName;Uid=root;Pwd=password;"
+    "Default": "Server=127.0.0.1;Port=3306;Database=DatabaseName;Uid=root;Pwd=password;"
   }
 }
 ```
@@ -522,8 +522,48 @@ CREATE TABLE `users`.`user_table` (
   UNIQUE INDEX `Email_UNIQUE` (`Email` ASC) VISIBLE);
 ```
 
+```sql
+CREATE TABLE `login` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `Name` varchar(500) NOT NULL,
+  `Username` varchar(300) NOT NULL,
+  `Password` varchar(500) NOT NULL,
+  `URL` varchar(500),
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Id_UNIQUE` (`Id`)
+)
+```
+
 - Insert data into the table:
 
 ```sql
 Insert INTO users.user_table(Username, MasterPassword, Email, User_Database) values("demo", "Pass123#", "demo@gmail.com", "demo_db");
+```
+
+### How to Hash Password using Bcrypt
+
+- Install `BCrypt.Net-Next` Nuget Package.
+- Create MasterPasswordHelper.cs in the DataAccessLibrary Project.
+
+```csharp
+namespace DataAccessLibrary.Helpers
+{
+    using BCrypt.Net;
+
+    public class MasterPasswordHelper
+    {
+        // Hash Master Password
+        public static string HashMasterPassword(string password)
+        {
+            return BCrypt.HashPassword(password, workFactor: 12);
+        }
+
+        // Verify Master Password
+        public static bool VerifyMasterPassword(string hashedPassword, string storedHash)
+        {
+            return BCrypt.Verify(hashedPassword, storedHash);
+        }
+    }
+}
+
 ```
