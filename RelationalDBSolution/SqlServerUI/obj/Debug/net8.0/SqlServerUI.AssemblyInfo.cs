@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SqlServerUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2cfa5e07a86cd0ece9560aa83eb3c57e5a53a60")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2af75e0dc6265245c53feff1ad5051c25e6352be")]
 [assembly: System.Reflection.AssemblyProductAttribute("SqlServerUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SqlServerUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

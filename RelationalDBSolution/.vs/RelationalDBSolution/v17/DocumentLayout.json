@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "D:\\DEV\\DotNet\\RelationalDBSolution\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FD77538F-0968-4CE2-B26D-208D46DCEB33}|MySqlUI\\MySqlUI.csproj|d:\\dev\\dotnet\\relationaldbsolution\\mysqlui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FD77538F-0968-4CE2-B26D-208D46DCEB33}|MySqlUI\\MySqlUI.csproj|solutionrelative:mysqlui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BFADE48F-ABEA-456F-8B09-6F84A221DBB0}|WinFormsAppUI\\WinFormsAppUI.csproj|d:\\dev\\dotnet\\relationaldbsolution\\winformsappui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFADE48F-ABEA-456F-8B09-6F84A221DBB0}|WinFormsAppUI\\WinFormsAppUI.csproj|solutionrelative:winformsappui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FD77538F-0968-4CE2-B26D-208D46DCEB33}|MySqlUI\\MySqlUI.csproj|d:\\dev\\dotnet\\relationaldbsolution\\mysqlui\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{FD77538F-0968-4CE2-B26D-208D46DCEB33}|MySqlUI\\MySqlUI.csproj|solutionrelative:mysqlui\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5E33AE12-B1F7-4270-B33A-D9654A432757}|DataAccessLibrary\\DataAccessLibrary.csproj|d:\\dev\\dotnet\\relationaldbsolution\\dataaccesslibrary\\mysqlcrud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5E33AE12-B1F7-4270-B33A-D9654A432757}|DataAccessLibrary\\DataAccessLibrary.csproj|solutionrelative:dataaccesslibrary\\mysqlcrud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5E33AE12-B1F7-4270-B33A-D9654A432757}|DataAccessLibrary\\DataAccessLibrary.csproj|d:\\dev\\dotnet\\relationaldbsolution\\dataaccesslibrary\\mysqldataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5E33AE12-B1F7-4270-B33A-D9654A432757}|DataAccessLibrary\\DataAccessLibrary.csproj|solutionrelative:dataaccesslibrary\\mysqldataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BFADE48F-ABEA-456F-8B09-6F84A221DBB0}|WinFormsAppUI\\WinFormsAppUI.csproj|d:\\dev\\dotnet\\relationaldbsolution\\winformsappui\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BFADE48F-ABEA-456F-8B09-6F84A221DBB0}|WinFormsAppUI\\WinFormsAppUI.csproj|solutionrelative:winformsappui\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MySqlCrud.cs",
-              "DocumentMoniker": "D:\\DEV\\DotNet\\RelationalDBSolution\\DataAccessLibrary\\MySqlCrud.cs",
-              "RelativeDocumentMoniker": "DataAccessLibrary\\MySqlCrud.cs",
-              "ToolTip": "D:\\DEV\\DotNet\\RelationalDBSolution\\DataAccessLibrary\\MySqlCrud.cs",
-              "RelativeToolTip": "DataAccessLibrary\\MySqlCrud.cs",
-              "ViewState": "AQIAAD4AAAAAAAAAAAAwwJwAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T17:11:29.511Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MySqlDataAccess.cs",
-              "DocumentMoniker": "D:\\DEV\\DotNet\\RelationalDBSolution\\DataAccessLibrary\\MySqlDataAccess.cs",
-              "RelativeDocumentMoniker": "DataAccessLibrary\\MySqlDataAccess.cs",
-              "ToolTip": "D:\\DEV\\DotNet\\RelationalDBSolution\\DataAccessLibrary\\MySqlDataAccess.cs",
-              "RelativeToolTip": "DataAccessLibrary\\MySqlDataAccess.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T17:07:22.73Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\DEV\\DotNet\\RelationalDBSolution\\MySqlUI\\appsettings.json",
-              "RelativeDocumentMoniker": "MySqlUI\\appsettings.json",
-              "ToolTip": "D:\\DEV\\DotNet\\RelationalDBSolution\\MySqlUI\\appsettings.json",
-              "RelativeToolTip": "MySqlUI\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABZAAAA",
+              "DocumentMoniker": "D:\\DEV\\DotNet\\RelationalDBSolution\\WinFormsAppUI\\appsettings.json",
+              "RelativeDocumentMoniker": "WinFormsAppUI\\appsettings.json",
+              "ToolTip": "D:\\DEV\\DotNet\\RelationalDBSolution\\WinFormsAppUI\\appsettings.json",
+              "RelativeToolTip": "WinFormsAppUI\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-04-16T16:59:01.055Z",
+              "WhenOpened": "2024-05-01T11:34:41.74Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\DEV\\DotNet\\RelationalDBSolution\\MySqlUI\\Program.cs",
-              "RelativeDocumentMoniker": "MySqlUI\\Program.cs",
-              "ToolTip": "D:\\DEV\\DotNet\\RelationalDBSolution\\MySqlUI\\Program.cs",
-              "RelativeToolTip": "MySqlUI\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAAjAAAA",
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\DEV\\DotNet\\RelationalDBSolution\\WinFormsAppUI\\Form1.cs",
+              "RelativeDocumentMoniker": "WinFormsAppUI\\Form1.cs",
+              "ToolTip": "D:\\DEV\\DotNet\\RelationalDBSolution\\WinFormsAppUI\\Form1.cs",
+              "RelativeToolTip": "WinFormsAppUI\\Form1.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAowCYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-16T16:57:16.554Z",
+              "WhenOpened": "2024-04-30T10:20:37.851Z",
               "EditorCaption": ""
             }
           ]

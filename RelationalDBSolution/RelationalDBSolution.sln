@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLibrary", "DataAc
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQLContactsDB", "SQLContactsDB\SQLContactsDB.sqlproj", "{B5105276-744A-4355-8CF3-A7FD76B2B6ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySqlUI", "MySqlUI\MySqlUI.csproj", "{FD77538F-0968-4CE2-B26D-208D46DCEB33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySqlUI", "MySqlUI\MySqlUI.csproj", "{FD77538F-0968-4CE2-B26D-208D46DCEB33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsAppUI", "WinFormsAppUI\WinFormsAppUI.csproj", "{BFADE48F-ABEA-456F-8B09-6F84A221DBB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{FD77538F-0968-4CE2-B26D-208D46DCEB33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD77538F-0968-4CE2-B26D-208D46DCEB33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD77538F-0968-4CE2-B26D-208D46DCEB33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFADE48F-ABEA-456F-8B09-6F84A221DBB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFADE48F-ABEA-456F-8B09-6F84A221DBB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFADE48F-ABEA-456F-8B09-6F84A221DBB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFADE48F-ABEA-456F-8B09-6F84A221DBB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
