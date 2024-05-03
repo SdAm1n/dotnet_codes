@@ -20,6 +20,10 @@ namespace DataAccessLibrary
         }
 
 
+        // ----------------- CRUD Operations ----------------- //
+        // ----------------- Users DB CRUD Operations ----------------- //
+
+
         // Get all users from the users database's user_table
         public List<UsersModel> GetAllUsers()
         {
@@ -135,6 +139,54 @@ namespace DataAccessLibrary
             {
                 return null;
             }
+        }
+
+
+        // ----------------- Secure Notes Table Operations ----------------- //
+
+        // Select Name and SecureNote from the secure_notes_table
+        public List<SecureNotesModel> GetSecureNotes(string userDatabase)
+        {
+            string sql = $"SELECT Name, SecureNote FROM {userDatabase}.secure_notes_table";
+
+            try
+            {
+                return db.LoadData<SecureNotesModel, dynamic>(sql, new { }, _connectionString);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        // Add a new Secure Note to the secure_notes_table
+        public void AddSecureNote(string name, byte[] secureNote, string userDatabase)
+        {
+            SecureNotesModel data = new SecureNotesModel
+            {
+                Name = name,
+                SecureNote = secureNote
+            };
+
+            string sql = $"INSERT INTO {userDatabase}.secure_notes_table (Name, SecureNote) VALUES (@Name, @SecureNote);";
+
+            db.SaveData(sql, data, _connectionString);
+        }
+
+        // Delete a Secure Note from the secure_notes_table
+        public void DeleteSecureNote(int id, string userDatabase)
+        {
+            string sql = $"DELETE FROM {userDatabase}.secure_notes_table WHERE Id = @Id";
+
+            db.SaveData(sql, new { Id = id }, _connectionString);
+        }
+
+        // Update Name or SecureNote or Both in the secure_notes_table
+        public void UpdateSecureNote(int id, string name, byte[] secureNote, string userDatabase)
+        {
+            string sql = $"UPDATE {userDatabase}.secure_notes_table SET Name = @Name, SecureNote = @SecureNote WHERE Id = @Id";
+
+            db.SaveData(sql, new { Id = id, Name = name, SecureNote = secureNote }, _connectionString);
         }
     }
 }
