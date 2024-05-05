@@ -369,5 +369,95 @@ namespace DataAccessLibrary
                 return 0;
             }
         }
+
+
+        // ----------------- Identities Table Operations ----------------- //
+
+        // Add items to identities_table
+        public void AddIdentity(string name, string title, string firstName, string lastName, 
+            string username, string company, byte[] licenseNumber, string email, byte[] phone, byte[] address, 
+            byte[] zip, string country, string userDatabase)
+        {
+            IdentitiesModel data = new IdentitiesModel
+            {
+                Name = name,
+                Title = title,
+                FirstName = firstName,
+                LastName = lastName,
+                Username = username,
+                Company = company,
+                LicenseNumber = licenseNumber,
+                Email = email,
+                Phone = phone,
+                Address = address,
+                Zip = zip,
+                Country = country
+            };
+
+            string sql = $"INSERT INTO {userDatabase}.identities_table (Name, Title, FirstName, LastName, " +
+                $"Username, Company, LicenseNumber, Email, Phone, Address, Zip, Country) " +
+                $"VALUES (@Name, @Title, @FirstName, @LastName, @Username, @Company, @LicenseNumber, @Email, " +
+                $"@Phone, @Address, @Zip, @Country);";
+
+            db.SaveData(sql, data, _connectionString);
+        }
+
+        // Get all items from identities_table
+        public List<IdentitiesModel> GetIdentities(string userDatabase)
+        {
+            string sql = $"SELECT Name, Title, FirstName, LastName, Username, Company, LicenseNumber, Email, " +
+                $"Phone, Address, Zip, Country " +
+                $"FROM {userDatabase}.identities_table";
+
+            try
+            {
+                return db.LoadData<IdentitiesModel, dynamic>(sql, new { }, _connectionString);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        // Delete an item from identities_table
+        public void DeleteIdentity(int id, string userDatabase)
+        {
+            string sql = $"DELETE FROM {userDatabase}.identities_table WHERE Id = @Id";
+
+            db.SaveData(sql, new { Id = id }, _connectionString);
+        }
+
+        // Update an item in identities_table
+        public void UpdateIdentity(int id, string name, string title, string firstName, string lastName, 
+                       string username, string company, byte[] licenseNumber, string email, byte[] phone, byte[] address,
+                                  byte[] zip, string country, string userDatabase)
+        {
+            string sql = $"UPDATE {userDatabase}.identities_table SET Name = @Name, Title = @Title, " +
+                $"FirstName = @FirstName, LastName = @LastName, Username = @Username, Company = @Company, " +
+                $"LicenseNumber = @LicenseNumber, Email = @Email, Phone = @Phone, Address = @Address, Zip = @Zip, " +
+                $"Country = @Country WHERE Id = @Id";
+
+            db.SaveData(sql, new { Id = id, Name = name, Title = title, FirstName = firstName, LastName = lastName, 
+                           Username = username, Company = company, LicenseNumber = licenseNumber, Email = email, Phone = phone, 
+                           Address = address, Zip = zip, Country = country }, _connectionString);
+        }
+
+        // Get id from identities_table by Name and Username
+        public int GetIdentityId(string name, string username, string userDatabase)
+        {
+            string sql = $"SELECT Id FROM {userDatabase}.identities_table WHERE Name = @Name AND Username = @Username";
+
+            try
+            {
+                var data = db.LoadData<IdentitiesModel, dynamic>(sql, new { Name = name, Username = username }, _connectionString).First();
+
+                return data.Id;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
     }
 }

@@ -20,7 +20,7 @@ namespace DataAccessLibrary.Models
         public byte[] Phone { get; set; }
         public byte[] Address { get; set; }
         public byte[] Zip { get; set; }
-        public byte[] Country { get; set; }
+        public string Country { get; set; }
 
     }
 }

@@ -26,7 +26,8 @@ namespace Credentia_Backend
             Console.WriteLine("4. Update");
             Console.WriteLine("q. Quit");
 
-            // Cards table operations
+            // Identities table operations
+
             while (true)
             {
                 Console.Write("Choose: ");
@@ -34,21 +35,21 @@ namespace Credentia_Backend
 
                 if (choose == "1")
                 {
-                    ReadAllCards(sql, db_name);
+                    ReadAllIdentities(sql, db_name);
                 }
                 else if (choose == "2")
                 {
-                    AddCard(sql, db_name);
-                    Console.WriteLine("Card Added");
+                    AddIdentity(sql, db_name);
+                    Console.WriteLine("Identity Added");
                 }
                 else if (choose == "3")
                 {
                     Console.Write("Enter ID: ");
                     int id = int.Parse(Console.ReadLine());
 
-                    DeleteCard(sql, id, db_name);
+                    DeleteIdentity(sql, id, db_name);
 
-                    Console.WriteLine("Card Deleted");
+                    Console.WriteLine("Identity Deleted");
                 }
                 else if (choose == "4")
                 {
@@ -56,20 +57,30 @@ namespace Credentia_Backend
                     int id = int.Parse(Console.ReadLine());
                     Console.Write("Enter Name: ");
                     string name = Console.ReadLine();
-                    Console.Write("Enter CardHolder Name: ");
-                    string cardHolderName = Console.ReadLine();
-                    Console.Write("Enter Card Number: ");
-                    string cardNumber = Console.ReadLine();
-                    Console.Write("Brand: ");
-                    string brand = Console.ReadLine();
-                    Console.Write("Enter Expiration Month: ");
-                    string expirationMonth = Console.ReadLine();
-                    Console.Write("Enter Expiration Year: ");
-                    string expirationYear = Console.ReadLine();
-                    Console.Write("Enter CVV: ");
-                    string cvv = Console.ReadLine();
+                    Console.Write("Enter Title: ");
+                    string title = Console.ReadLine();
+                    Console.Write("Enter First Name: ");
+                    string firstName = Console.ReadLine();
+                    Console.Write("Enter Last Name: ");
+                    string lastName = Console.ReadLine();
+                    Console.Write("Enter Username: ");
+                    string username = Console.ReadLine();
+                    Console.Write("Enter Company: ");
+                    string company = Console.ReadLine();
+                    Console.Write("Enter License Number: ");
+                    string licenseNumber = Console.ReadLine();
+                    Console.Write("Enter Email: ");
+                    string email = Console.ReadLine();
+                    Console.Write("Enter Phone: ");
+                    string phone = Console.ReadLine();
+                    Console.Write("Enter Address: ");
+                    string address = Console.ReadLine();
+                    Console.Write("Enter Zip: ");
+                    string zip = Console.ReadLine();
+                    Console.Write("Enter Country: ");
+                    string country = Console.ReadLine();
 
-                    UpdateCard(sql, id, name, cardHolderName, cardNumber, brand, expirationMonth, expirationYear, cvv, db_name);
+                    UpdateIdentity(sql, id, name, title, firstName, lastName, username, company, licenseNumber, email, phone, address, zip, country, db_name);
                 }
                 else if (choose == "q")
                 {
@@ -81,6 +92,62 @@ namespace Credentia_Backend
                     Console.WriteLine("Invalid Input");
                 }
             }
+
+            //// Cards table operations
+            //while (true)
+            //{
+            //    Console.Write("Choose: ");
+            //    choose = Console.ReadLine();
+
+            //    if (choose == "1")
+            //    {
+            //        ReadAllCards(sql, db_name);
+            //    }
+            //    else if (choose == "2")
+            //    {
+            //        AddCard(sql, db_name);
+            //        Console.WriteLine("Card Added");
+            //    }
+            //    else if (choose == "3")
+            //    {
+            //        Console.Write("Enter ID: ");
+            //        int id = int.Parse(Console.ReadLine());
+
+            //        DeleteCard(sql, id, db_name);
+
+            //        Console.WriteLine("Card Deleted");
+            //    }
+            //    else if (choose == "4")
+            //    {
+            //        Console.Write("Enter ID: ");
+            //        int id = int.Parse(Console.ReadLine());
+            //        Console.Write("Enter Name: ");
+            //        string name = Console.ReadLine();
+            //        Console.Write("Enter CardHolder Name: ");
+            //        string cardHolderName = Console.ReadLine();
+            //        Console.Write("Enter Card Number: ");
+            //        string cardNumber = Console.ReadLine();
+            //        Console.Write("Brand: ");
+            //        string brand = Console.ReadLine();
+            //        Console.Write("Enter Expiration Month: ");
+            //        string expirationMonth = Console.ReadLine();
+            //        Console.Write("Enter Expiration Year: ");
+            //        string expirationYear = Console.ReadLine();
+            //        Console.Write("Enter CVV: ");
+            //        string cvv = Console.ReadLine();
+
+            //        UpdateCard(sql, id, name, cardHolderName, cardNumber, brand, expirationMonth, expirationYear, cvv, db_name);
+            //    }
+            //    else if (choose == "q")
+            //    {
+            //        Console.WriteLine("Quitting");
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Invalid Input");
+            //    }
+            //}
 
 
             // logins table operations
@@ -369,6 +436,80 @@ namespace Credentia_Backend
             sql.UpdateCard(id, name, cardHolderName, encryptedCardNumber, brand, encryptedExpirationMonth, encryptedExpirationYear, encryptedCVV, userDatabase);
         }
       
+
+        // ----------------- Identities Table Operations ----------------- //
+
+        // Get all Identities from the user's database's identities_table
+        private static void ReadAllIdentities(UsersDBCrud sql, string userDatabase)
+        {
+            var rows = sql.GetIdentities(userDatabase);
+            foreach (var row in rows)
+            {
+                // Decrypt the License Number, Phone, Address, and Zip
+                string decryptedLicenseNumber = AesHelper.Decrypt(row.LicenseNumber);
+                string decryptedPhone = AesHelper.Decrypt(row.Phone);
+                string decryptedAddress = AesHelper.Decrypt(row.Address);
+                string decryptedZip = AesHelper.Decrypt(row.Zip);
+
+                Console.WriteLine($"{row.Name}: {row.Title} {row.FirstName} {row.LastName} {row.Username} {row.Company} {decryptedLicenseNumber} {row.Email} {decryptedPhone} {decryptedAddress} {decryptedZip} {row.Country}");
+            }
+        }
+
+        // Add a new Identity to the user's database's identities_table
+        private static void AddIdentity(UsersDBCrud sql, string userDatabase)
+        {
+            Console.Write("Enter Name: ");
+            string name = Console.ReadLine();
+            Console.Write("Enter Title: ");
+            string title = Console.ReadLine();
+            Console.Write("Enter First Name: ");
+            string firstName = Console.ReadLine();
+            Console.Write("Enter Last Name: ");
+            string lastName = Console.ReadLine();
+            Console.Write("Enter Username: ");
+            string username = Console.ReadLine();
+            Console.Write("Enter Company: ");
+            string company = Console.ReadLine();
+            Console.Write("Enter License Number: ");
+            string licenseNumber = Console.ReadLine();
+            Console.Write("Enter Email: ");
+            string email = Console.ReadLine();
+            Console.Write("Enter Phone: ");
+            string phone = Console.ReadLine();
+            Console.Write("Enter Address: ");
+            string address = Console.ReadLine();
+            Console.Write("Enter Zip: ");
+            string zip = Console.ReadLine();
+            Console.Write("Enter Country: ");
+            string country = Console.ReadLine();
+
+            // Encrypt the License Number, Phone, Address, and Zip
+            byte[] encryptedLicenseNumber = AesHelper.Encrypt(licenseNumber);
+            byte[] encryptedPhone = AesHelper.Encrypt(phone);
+            byte[] encryptedAddress = AesHelper.Encrypt(address);
+            byte[] encryptedZip = AesHelper.Encrypt(zip);
+
+            sql.AddIdentity(name, title, firstName, lastName, username, company, encryptedLicenseNumber, email, encryptedPhone, encryptedAddress, encryptedZip, country, userDatabase);
+        }
+
+        // Delete an Identity from the user's database's identities_table
+        private static void DeleteIdentity(UsersDBCrud sql, int id, string userDatabase)
+        {
+            sql.DeleteIdentity(id, userDatabase);
+        }
+
+        // Update an Identity in the user's database's identities_table
+        private static void UpdateIdentity(UsersDBCrud sql, int id, string name, string title, string firstName, string lastName, string username, string company, string licenseNumber, string email, string phone, string address, string zip, string country, string userDatabase)
+        {
+            // Update an Identity in the user's database's identities_table
+            byte[] encryptedLicenseNumber = AesHelper.Encrypt(licenseNumber);
+            byte[] encryptedPhone = AesHelper.Encrypt(phone);
+            byte[] encryptedAddress = AesHelper.Encrypt(address);
+            byte[] encryptedZip = AesHelper.Encrypt(zip);
+
+            sql.UpdateIdentity(id, name, title, firstName, lastName, username, company, encryptedLicenseNumber, email, encryptedPhone, encryptedAddress, encryptedZip, country, userDatabase);
+        }
+
 
 
 
