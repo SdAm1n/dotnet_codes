@@ -24,6 +24,26 @@ namespace DataAccessLibrary
         // ----------------- Users DB CRUD Operations ----------------- //
 
 
+        // Create Users table if doesn't exist and create user_table in the users database
+        public void CreateUsersDB()
+        {
+            string sql = @"CREATE SCHEMA IF NOT EXISTS users;
+                            USE users;
+                            CREATE TABLE IF NOT EXISTS user_table (
+                            Id INT NOT NULL AUTO_INCREMENT,
+                            Username VARCHAR(200) NOT NULL,
+                            MasterPassword VARCHAR(500) NOT NULL,
+                            Email VARCHAR(300) NOT NULL,
+                            User_Database VARCHAR(300) NOT NULL,
+                            PRIMARY KEY (Id),
+                            UNIQUE KEY Id_UNIQUE (Id),
+                            UNIQUE KEY Username_UNIQUE (Username),
+                            UNIQUE KEY Email_UNIQUE (Email));";
+
+            db.SaveData(sql, new { }, _connectionString);
+        }
+
+
         // Get all users from the users database's user_table
         public List<UsersModel> GetAllUsers()
         {
@@ -187,6 +207,23 @@ namespace DataAccessLibrary
             string sql = $"UPDATE {userDatabase}.secure_notes_table SET Name = @Name, SecureNote = @SecureNote WHERE Id = @Id";
 
             db.SaveData(sql, new { Id = id, Name = name, SecureNote = secureNote }, _connectionString);
+        }
+
+        // Get id from secure_notes_table
+        public int GetSecureNoteId(string name, string userDatabase)
+        {
+            string sql = $"SELECT Id FROM {userDatabase}.secure_notes_table WHERE Name = @Name";
+
+            try
+            {
+                var data = db.LoadData<SecureNotesModel, dynamic>(sql, new { Name = name }, _connectionString).First();
+
+                return data.Id;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
     }
 }

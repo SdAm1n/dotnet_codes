@@ -16,6 +16,9 @@ namespace Credentia_Backend
 
             UsersDBCrud sql = new UsersDBCrud(GetConnectionString() + $"Database={db_name};");
 
+            // create users db and user_table if doesn't exist
+            CreateUsersDB(sql);
+
             string choose;
             Console.WriteLine("1. view all");
             Console.WriteLine("2. Add new");
@@ -191,6 +194,13 @@ namespace Credentia_Backend
 
 
         // --------------- User Table Operations ----------------- //
+
+        // create users db and user_table if doesn't exist
+        private static void CreateUsersDB(UsersDBCrud sql)
+        {
+            sql.CreateUsersDB();
+        }
+
 
         // Get Master Password from the Users database's user_table
         private static string GetMasterPassword(UsersDBCrud sql)
