@@ -11,11 +11,11 @@ namespace DataAccessLibrary.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string CardholderName { get; set; }
-        public string CardNumber { get; set; }
+        public byte[] CardNumber { get; set; }
         public string Brand { get; set; }
-        public string ExpirationMonth { get; set; }
-        public string ExpirationYear { get; set; }
-        public string SecurityCode { get; set; }
+        public byte[] ExpirationMonth { get; set; }
+        public byte[] ExpirationYear { get; set; }
+        public byte[] SecurityCode { get; set; }
 
         
     }

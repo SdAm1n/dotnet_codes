@@ -92,7 +92,7 @@ namespace DataAccessLibrary
             // Create Logins Table
             string sql = $"CREATE TABLE {userDatabase}.`logins_table` (`Id` int NOT NULL AUTO_INCREMENT,  " +
                 $"`Name` varchar(500) NOT NULL, `Username` varchar(300) NOT NULL," +
-                $"`Password` varchar(500) NOT NULL, `URL` varchar(500), PRIMARY KEY (`Id`)," +
+                $"`Password` BLOB NOT NULL, `URL` varchar(500), PRIMARY KEY (`Id`)," +
                 $" UNIQUE KEY `Id_UNIQUE` (`Id`))";
 
             db.SaveData(sql, new { }, _connectionString);
@@ -100,9 +100,9 @@ namespace DataAccessLibrary
             // Create Cards Table
             sql = $"CREATE TABLE {userDatabase}.`cards_table` (`Id` int NOT NULL AUTO_INCREMENT," +
                 $"`Name` varchar(300) NOT NULL,  `CardholderName` varchar(300) NOT NULL," +
-                $"`CardNumber` varchar(100) NOT NULL, `Brand` varchar(300) NOT NULL," +
-                $"`ExpirationMonth` varchar(45) NOT NULL,`ExpirationYear` varchar(45) NOT NULL, " +
-                $"`SecurityCode` varchar(45) NOT NULL,PRIMARY KEY (`Id`), UNIQUE KEY `Id_UNIQUE` (`Id`))";
+                $"`CardNumber` BLOB NOT NULL, `Brand` varchar(300) NOT NULL," +
+                $"`ExpirationMonth` BLOB NOT NULL,`ExpirationYear` BLOB NOT NULL, " +
+                $"`SecurityCode` BLOB NOT NULL,PRIMARY KEY (`Id`), UNIQUE KEY `Id_UNIQUE` (`Id`))";
 
             db.SaveData(sql, new { }, _connectionString);
 
@@ -110,9 +110,9 @@ namespace DataAccessLibrary
             sql = $"CREATE TABLE {userDatabase}.`identities_table` (`Id` int NOT NULL AUTO_INCREMENT, " +
                 $"`Name` varchar(300) NOT NULL, `Title` varchar(300) NOT NULL, `FirstName` varchar(300) NOT NULL," +
                 $"`LastName` varchar(300) NOT NULL, `Username` varchar(100) DEFAULT NULL, " +
-                $"`Company` varchar(200) DEFAULT NULL,`LicenseNumber` varchar(200) DEFAULT NULL, " +
-                $"`Email` varchar(300) DEFAULT NULL, `Phone` varchar(200) DEFAULT NULL," +
-                $"`Address` varchar(500) DEFAULT NULL, `Zip` varchar(100) DEFAULT NULL, " +
+                $"`Company` varchar(200) DEFAULT NULL,`LicenseNumber` BLOB DEFAULT NULL, " +
+                $"`Email` varchar(300) DEFAULT NULL, `Phone` BLOB DEFAULT NULL," +
+                $"`Address` BLOB DEFAULT NULL, `Zip` BLOB DEFAULT NULL, " +
                 $"`Country` varchar(200) DEFAULT NULL, PRIMARY KEY (`Id`), UNIQUE KEY `Id_UNIQUE` (`Id`))";
 
             db.SaveData(sql, new { }, _connectionString);
@@ -217,6 +217,150 @@ namespace DataAccessLibrary
             try
             {
                 var data = db.LoadData<SecureNotesModel, dynamic>(sql, new { Name = name }, _connectionString).First();
+
+                return data.Id;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
+        // ----------------- Logins Table Operations ----------------- //
+        
+        // Add items to logins_table
+        public void AddLogin(string name, string username, byte[] password, string url, string userDatabase)
+        {
+            LoginsModel data = new LoginsModel
+            {
+                Name = name,
+                Username = username,
+                Password = password,
+                URL = url
+            };
+
+            string sql = $"INSERT INTO {userDatabase}.logins_table (Name, Username, Password, URL) " +
+                $"VALUES (@Name, @Username, @Password, @URL);";
+
+            db.SaveData(sql, data, _connectionString);
+        }
+
+        // Get all items from logins_table
+        public List<LoginsModel> GetLogins(string userDatabase)
+        {
+            string sql = $"SELECT Name, Username, Password, URL FROM {userDatabase}.logins_table";
+
+            try
+            {
+                return db.LoadData<LoginsModel, dynamic>(sql, new { }, _connectionString);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        // Delete an item from logins_table
+        public void DeleteLogin(int id, string userDatabase)
+        {
+            string sql = $"DELETE FROM {userDatabase}.logins_table WHERE Id = @Id";
+
+            db.SaveData(sql, new { Id = id }, _connectionString);
+        }
+
+        // Update an item in logins_table
+        public void UpdateLogin(int id, string name, string username, byte[] password, string url, string userDatabase)
+        {
+            string sql = $"UPDATE {userDatabase}.logins_table SET Name = @Name, " +
+                $"Username = @Username, Password = @Password, URL = @URL WHERE Id = @Id";
+
+            db.SaveData(sql, new { Id = id, Name = name, Username = username, Password = password, URL = url }, _connectionString);
+        }
+
+        // Get id from logins_table by Name and username
+        public int GetLoginId(string name, string username, string userDatabase)
+        {
+            string sql = $"SELECT Id FROM {userDatabase}.logins_table WHERE Name = @Name AND Username = @Username";
+
+            try
+            {
+                var data = db.LoadData<LoginsModel, dynamic>(sql, new { Name = name, Username = username }, _connectionString).First();
+
+                return data.Id;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
+
+        // ----------------- Cards Table Operations ----------------- //
+
+        // Add items to cards_table
+        public void AddCard(string name, string cardholderName, byte[] cardNumber, string brand, byte[] expirationMonth, byte[] expirationYear, byte[] securityCode, string userDatabase)
+        {
+            CardsModel data = new CardsModel
+            {
+                Name = name,
+                CardholderName = cardholderName,
+                CardNumber = cardNumber,
+                Brand = brand,
+                ExpirationMonth = expirationMonth,
+                ExpirationYear = expirationYear,
+                SecurityCode = securityCode
+            };
+
+            string sql = $"INSERT INTO {userDatabase}.cards_table (Name, CardholderName, CardNumber, Brand, " +
+                $"ExpirationMonth, ExpirationYear, SecurityCode) " +
+                $"VALUES (@Name, @CardholderName, @CardNumber, @Brand, @ExpirationMonth, @ExpirationYear, " +
+                $"@SecurityCode);";
+
+            db.SaveData(sql, data, _connectionString);
+        }
+
+        // Get all items from cards_table
+        public List<CardsModel> GetCards(string userDatabase)
+        {
+            string sql = $"SELECT Name, CardholderName, CardNumber, Brand, ExpirationMonth, ExpirationYear, " +
+                $"SecurityCode FROM {userDatabase}.cards_table";
+
+            try
+            {
+                return db.LoadData<CardsModel, dynamic>(sql, new { }, _connectionString);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        // Delete an item from cards_table
+        public void DeleteCard(int id, string userDatabase)
+        {
+            string sql = $"DELETE FROM {userDatabase}.cards_table WHERE Id = @Id";
+
+            db.SaveData(sql, new { Id = id }, _connectionString);
+        }
+
+        // Update an item in cards_table
+        public void UpdateCard(int id, string name, string cardholderName, byte[] cardNumber, string brand, byte[] expirationMonth, byte[] expirationYear, byte[] securityCode, string userDatabase)
+        {
+            string sql = $"UPDATE {userDatabase}.cards_table SET Name = @Name, CardholderName = @CardholderName, " +
+                $"CardNumber = @CardNumber, Brand = @Brand, ExpirationMonth = @ExpirationMonth, ExpirationYear = @ExpirationYear, " +
+                $"SecurityCode = @SecurityCode WHERE Id = @Id";
+
+            db.SaveData(sql, new { Id = id, Name = name, CardholderName = cardholderName, CardNumber = cardNumber, Brand = brand, ExpirationMonth = expirationMonth, ExpirationYear = expirationYear, SecurityCode = securityCode }, _connectionString);
+        }
+
+        // Get id from cards_table by Name and Brand
+        public int GetCardId(string name, string brand, string userDatabase)
+        {
+            string sql = $"SELECT Id FROM {userDatabase}.cards_table WHERE Name = @Name AND Brand = @Brand";
+
+            try
+            {
+                var data = db.LoadData<CardsModel, dynamic>(sql, new { Name = name, Brand = brand }, _connectionString).First();
 
                 return data.Id;
             }
