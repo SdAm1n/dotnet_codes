@@ -127,13 +127,13 @@ namespace DataAccessLibrary
             db.SaveData(sql, new { }, _connectionString);
         }
 
-        // Delete a user from the users database's user_table and delete the user's database
-        public void DeleteUser(int id, string username)
+        // Delete a user from the users database's user_table and delete the user's database using username and master password
+
+        public void DeleteUser(string username, string masterPassword)
         {
-            string sql = "DELETE FROM users.user_table WHERE Id = @Id and Username = @Username";
+            string sql = "DELETE FROM users.user_table WHERE Username = @Username AND MasterPassword = @MasterPassword";
 
-            db.SaveData(sql, new { Id = id, Username = username }, _connectionString);
-
+            db.SaveData(sql, new { Username = username, MasterPassword = masterPassword }, _connectionString);
         }
 
 
@@ -160,6 +160,14 @@ namespace DataAccessLibrary
             {
                 return null;
             }
+        }
+
+        // Update the Master Password in the Users database's user_table by unique Username
+        public void UpdateMasterPassword(string username, string masterPassword)
+        {
+            string sql = "UPDATE users.user_table SET MasterPassword = @MasterPassword WHERE Username = @Username";
+
+            db.SaveData(sql, new { Username = username, MasterPassword = masterPassword }, _connectionString);
         }
 
 
@@ -299,7 +307,8 @@ namespace DataAccessLibrary
         // ----------------- Cards Table Operations ----------------- //
 
         // Add items to cards_table
-        public void AddCard(string name, string cardholderName, byte[] cardNumber, string brand, byte[] expirationMonth, byte[] expirationYear, byte[] securityCode, string userDatabase)
+        public void AddCard(string name, string cardholderName, byte[] cardNumber, string brand, 
+            byte[] expirationMonth, byte[] expirationYear, byte[] securityCode, string userDatabase)
         {
             CardsModel data = new CardsModel
             {
@@ -345,7 +354,9 @@ namespace DataAccessLibrary
         }
 
         // Update an item in cards_table
-        public void UpdateCard(int id, string name, string cardholderName, byte[] cardNumber, string brand, byte[] expirationMonth, byte[] expirationYear, byte[] securityCode, string userDatabase)
+        public void UpdateCard(int id, string name, string cardholderName, byte[] cardNumber, 
+            string brand, byte[] expirationMonth, byte[] expirationYear, byte[] securityCode, 
+            string userDatabase)
         {
             string sql = $"UPDATE {userDatabase}.cards_table SET Name = @Name, CardholderName = @CardholderName, " +
                 $"CardNumber = @CardNumber, Brand = @Brand, ExpirationMonth = @ExpirationMonth, ExpirationYear = @ExpirationYear, " +
@@ -431,7 +442,9 @@ namespace DataAccessLibrary
         }
 
         // Update an item in identities_table
-        public void UpdateIdentity(int id, string name, string title, string firstName, string lastName, string username, string company, byte[] licenseNumber, string email, byte[] phone, byte[] address, byte[] zip, string country, byte[] nidNo, byte[] passportNo, string userDatabase)
+        public void UpdateIdentity(int id, string name, string title, string firstName, string lastName, 
+            string username, string company, byte[] licenseNumber, string email, byte[] phone, byte[] address, 
+            byte[] zip, string country, byte[] nidNo, byte[] passportNo, string userDatabase)
         {
             string sql = $"UPDATE {userDatabase}.identities_table SET Name = @Name, Title = @Title, FirstName = @FirstName, " +
                 $"LastName = @LastName, Username = @Username, Company = @Company, LicenseNumber = @LicenseNumber, " +
