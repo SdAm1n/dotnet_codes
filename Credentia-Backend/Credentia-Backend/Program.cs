@@ -12,7 +12,7 @@ namespace Credentia_Backend
         static void Main(string[] args)
         {
 
-            string db_name = "d_credentia_db";
+            string db_name = "f_credentia_db";
 
             UsersDBCrud sql = new UsersDBCrud(GetConnectionString() + $"Database={db_name};");
 
@@ -79,8 +79,14 @@ namespace Credentia_Backend
                     string zip = Console.ReadLine();
                     Console.Write("Enter Country: ");
                     string country = Console.ReadLine();
+                    Console.Write("Enter NID No: ");
+                    string nidNo = Console.ReadLine();
+                    Console.Write("Enter Passport No: ");
+                    string passportNo = Console.ReadLine();
 
-                    UpdateIdentity(sql, id, name, title, firstName, lastName, username, company, licenseNumber, email, phone, address, zip, country, db_name);
+                    UpdateIdentity(sql, id, name, title, firstName, lastName, username, company,
+                        licenseNumber, email, phone, address, zip, country, nidNo, passportNo, db_name);
+
                 }
                 else if (choose == "q")
                 {
@@ -93,61 +99,61 @@ namespace Credentia_Backend
                 }
             }
 
-            //// Cards table operations
-            //while (true)
-            //{
-            //    Console.Write("Choose: ");
-            //    choose = Console.ReadLine();
+            // Cards table operations
+            while (true)
+            {
+                Console.Write("Choose: ");
+                choose = Console.ReadLine();
 
-            //    if (choose == "1")
-            //    {
-            //        ReadAllCards(sql, db_name);
-            //    }
-            //    else if (choose == "2")
-            //    {
-            //        AddCard(sql, db_name);
-            //        Console.WriteLine("Card Added");
-            //    }
-            //    else if (choose == "3")
-            //    {
-            //        Console.Write("Enter ID: ");
-            //        int id = int.Parse(Console.ReadLine());
+                if (choose == "1")
+                {
+                    ReadAllCards(sql, db_name);
+                }
+                else if (choose == "2")
+                {
+                    AddCard(sql, db_name);
+                    Console.WriteLine("Card Added");
+                }
+                else if (choose == "3")
+                {
+                    Console.Write("Enter ID: ");
+                    int id = int.Parse(Console.ReadLine());
 
-            //        DeleteCard(sql, id, db_name);
+                    DeleteCard(sql, id, db_name);
 
-            //        Console.WriteLine("Card Deleted");
-            //    }
-            //    else if (choose == "4")
-            //    {
-            //        Console.Write("Enter ID: ");
-            //        int id = int.Parse(Console.ReadLine());
-            //        Console.Write("Enter Name: ");
-            //        string name = Console.ReadLine();
-            //        Console.Write("Enter CardHolder Name: ");
-            //        string cardHolderName = Console.ReadLine();
-            //        Console.Write("Enter Card Number: ");
-            //        string cardNumber = Console.ReadLine();
-            //        Console.Write("Brand: ");
-            //        string brand = Console.ReadLine();
-            //        Console.Write("Enter Expiration Month: ");
-            //        string expirationMonth = Console.ReadLine();
-            //        Console.Write("Enter Expiration Year: ");
-            //        string expirationYear = Console.ReadLine();
-            //        Console.Write("Enter CVV: ");
-            //        string cvv = Console.ReadLine();
+                    Console.WriteLine("Card Deleted");
+                }
+                else if (choose == "4")
+                {
+                    Console.Write("Enter ID: ");
+                    int id = int.Parse(Console.ReadLine());
+                    Console.Write("Enter Name: ");
+                    string name = Console.ReadLine();
+                    Console.Write("Enter CardHolder Name: ");
+                    string cardHolderName = Console.ReadLine();
+                    Console.Write("Enter Card Number: ");
+                    string cardNumber = Console.ReadLine();
+                    Console.Write("Brand: ");
+                    string brand = Console.ReadLine();
+                    Console.Write("Enter Expiration Month: ");
+                    string expirationMonth = Console.ReadLine();
+                    Console.Write("Enter Expiration Year: ");
+                    string expirationYear = Console.ReadLine();
+                    Console.Write("Enter CVV: ");
+                    string cvv = Console.ReadLine();
 
-            //        UpdateCard(sql, id, name, cardHolderName, cardNumber, brand, expirationMonth, expirationYear, cvv, db_name);
-            //    }
-            //    else if (choose == "q")
-            //    {
-            //        Console.WriteLine("Quitting");
-            //        break;
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Invalid Input");
-            //    }
-            //}
+                    UpdateCard(sql, id, name, cardHolderName, cardNumber, brand, expirationMonth, expirationYear, cvv, db_name);
+                }
+                else if (choose == "q")
+                {
+                    Console.WriteLine("Quitting");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input");
+                }
+            }
 
 
             // logins table operations
@@ -246,7 +252,7 @@ namespace Credentia_Backend
             //    }
             //}
 
-            // users db operations
+            //// users db operations
             //string DATABASE_NAME = "users";
             //// Create an instance of the MySqlCrud class
             //UsersDBCrud sql = new UsersDBCrud(GetConnectionString() + $"Database={DATABASE_NAME};");
@@ -303,7 +309,8 @@ namespace Credentia_Backend
             //        string masterPassword = Console.ReadLine();
 
             //        var storedMasterPassword = sql.GetMasterPassword(username);
-            //        bool verified = MasterPasswordHelper.VerifyMasterPassword(masterPassword, storedMasterPassword);
+            //        bool verified = MasterPasswordHelper
+            //                        .VerifyMasterPassword(masterPassword, storedMasterPassword);
             //        Console.WriteLine($"Verified: {verified}");
             //    }
             //    else if (choose == "q")
@@ -440,22 +447,26 @@ namespace Credentia_Backend
         // ----------------- Identities Table Operations ----------------- //
 
         // Get all Identities from the user's database's identities_table
+
         private static void ReadAllIdentities(UsersDBCrud sql, string userDatabase)
         {
             var rows = sql.GetIdentities(userDatabase);
             foreach (var row in rows)
             {
-                // Decrypt the License Number, Phone, Address, and Zip
+                // Decrypt the License Number, Phone, Address, Zip, and NID No
                 string decryptedLicenseNumber = AesHelper.Decrypt(row.LicenseNumber);
                 string decryptedPhone = AesHelper.Decrypt(row.Phone);
                 string decryptedAddress = AesHelper.Decrypt(row.Address);
                 string decryptedZip = AesHelper.Decrypt(row.Zip);
+                string decryptedNidNo = AesHelper.Decrypt(row.NidNo);
+                string decryptedPassportNo = AesHelper.Decrypt(row.PassportNo);
 
-                Console.WriteLine($"{row.Name}: {row.Title} {row.FirstName} {row.LastName} {row.Username} {row.Company} {decryptedLicenseNumber} {row.Email} {decryptedPhone} {decryptedAddress} {decryptedZip} {row.Country}");
+                Console.WriteLine($"{row.Name}: {row.Title} {row.FirstName} {row.LastName} {row.Username} {row.Company} {decryptedLicenseNumber} {row.Email} {decryptedPhone} {decryptedAddress} {decryptedZip} {row.Country} {decryptedNidNo} {decryptedPassportNo}");
             }
         }
 
         // Add a new Identity to the user's database's identities_table
+
         private static void AddIdentity(UsersDBCrud sql, string userDatabase)
         {
             Console.Write("Enter Name: ");
@@ -482,32 +493,47 @@ namespace Credentia_Backend
             string zip = Console.ReadLine();
             Console.Write("Enter Country: ");
             string country = Console.ReadLine();
+            Console.Write("Enter NID No: ");
+            string nidNo = Console.ReadLine();
+            Console.Write("Enter Passport No: ");
+            string passportNo = Console.ReadLine();
 
-            // Encrypt the License Number, Phone, Address, and Zip
+            // Encrypt the License Number, Phone, Address, Zip, and NID No
             byte[] encryptedLicenseNumber = AesHelper.Encrypt(licenseNumber);
             byte[] encryptedPhone = AesHelper.Encrypt(phone);
             byte[] encryptedAddress = AesHelper.Encrypt(address);
             byte[] encryptedZip = AesHelper.Encrypt(zip);
+            byte[] encryptedNidNo = AesHelper.Encrypt(nidNo);
+            byte[] encryptedPassportNo = AesHelper.Encrypt(passportNo);
 
-            sql.AddIdentity(name, title, firstName, lastName, username, company, encryptedLicenseNumber, email, encryptedPhone, encryptedAddress, encryptedZip, country, userDatabase);
+            sql.AddIdentity(name, title, firstName, lastName, username, company, encryptedLicenseNumber, 
+                email, encryptedPhone, encryptedAddress, encryptedZip, country, encryptedNidNo, 
+                encryptedPassportNo, userDatabase);
         }
+       
 
         // Delete an Identity from the user's database's identities_table
+
         private static void DeleteIdentity(UsersDBCrud sql, int id, string userDatabase)
         {
             sql.DeleteIdentity(id, userDatabase);
         }
 
         // Update an Identity in the user's database's identities_table
-        private static void UpdateIdentity(UsersDBCrud sql, int id, string name, string title, string firstName, string lastName, string username, string company, string licenseNumber, string email, string phone, string address, string zip, string country, string userDatabase)
+
+        private static void UpdateIdentity(UsersDBCrud sql, int id, string name, string title, string firstName, string lastName, string username, string company, string licenseNumber, string email, string phone, string address, string zip, string country, string nidNo, string passportNo, string userDatabase)
         {
             // Update an Identity in the user's database's identities_table
             byte[] encryptedLicenseNumber = AesHelper.Encrypt(licenseNumber);
             byte[] encryptedPhone = AesHelper.Encrypt(phone);
             byte[] encryptedAddress = AesHelper.Encrypt(address);
             byte[] encryptedZip = AesHelper.Encrypt(zip);
+            byte[] encryptedNidNo = AesHelper.Encrypt(nidNo);
+            byte[] encryptedPassportNo = AesHelper.Encrypt(passportNo);
 
-            sql.UpdateIdentity(id, name, title, firstName, lastName, username, company, encryptedLicenseNumber, email, encryptedPhone, encryptedAddress, encryptedZip, country, userDatabase);
+            sql.UpdateIdentity(id, name, title, firstName, lastName, username, company, encryptedLicenseNumber, 
+                email, encryptedPhone, encryptedAddress, encryptedZip, country, encryptedNidNo, 
+                encryptedPassportNo, userDatabase);
         }
 
 
@@ -648,21 +674,18 @@ namespace Credentia_Backend
             }
         }
 
+        // Get connection string from the DBConnectionHelper class
 
-        // Getting the connection string from the appsettings.json file
         private static string GetConnectionString(string connectionStringName = "Default")
         {
-            string output = "";
-
-            var builder = new ConfigurationBuilder()
-                          .SetBasePath(Directory.GetCurrentDirectory())
-                          .AddJsonFile("appsettings.json");
-
-            var config = builder.Build();
-
-            output = config.GetConnectionString(connectionStringName);
-
-            return output;
+            return DBConnectionHelper.GetConnectionString(connectionStringName);
         }
+
+
+        //// Getting the connection string from the appsettings.json file
+        //private static string GetConnectionString(string connectionStringName = "Default")
+        //{
+        //    return  DBConnectionHelper.GetConnectionString(connectionStringName);
+        //}
     }
 }

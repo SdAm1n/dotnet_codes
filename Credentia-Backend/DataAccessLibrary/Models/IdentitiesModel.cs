@@ -22,5 +22,8 @@ namespace DataAccessLibrary.Models
         public byte[] Zip { get; set; }
         public string Country { get; set; }
 
+        public byte[] NidNo { get; set; }
+        public byte[] PassportNo { get; set; }
+
     }
 }

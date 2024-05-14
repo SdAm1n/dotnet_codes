@@ -113,7 +113,8 @@ namespace DataAccessLibrary
                 $"`Company` varchar(200) DEFAULT NULL,`LicenseNumber` BLOB DEFAULT NULL, " +
                 $"`Email` varchar(300) DEFAULT NULL, `Phone` BLOB DEFAULT NULL," +
                 $"`Address` BLOB DEFAULT NULL, `Zip` BLOB DEFAULT NULL, " +
-                $"`Country` varchar(200) DEFAULT NULL, PRIMARY KEY (`Id`), UNIQUE KEY `Id_UNIQUE` (`Id`))";
+                $"`Country` varchar(200), `NidNo` BLOB DEFAULT NULL, `PassportNo` BLOB DEFAULT NULL," +
+                $"PRIMARY KEY (`Id`), UNIQUE KEY `Id_UNIQUE` (`Id`))";
 
             db.SaveData(sql, new { }, _connectionString);
 
@@ -374,9 +375,10 @@ namespace DataAccessLibrary
         // ----------------- Identities Table Operations ----------------- //
 
         // Add items to identities_table
-        public void AddIdentity(string name, string title, string firstName, string lastName, 
-            string username, string company, byte[] licenseNumber, string email, byte[] phone, byte[] address, 
-            byte[] zip, string country, string userDatabase)
+
+        public void AddIdentity(string name, string title, string firstName, string lastName, string username, 
+            string company, byte[] licenseNumber, string email, byte[] phone, byte[] address, byte[] zip, 
+            string country, byte[] nidNo, byte[] passportNo, string userDatabase)
         {
             IdentitiesModel data = new IdentitiesModel
             {
@@ -391,13 +393,15 @@ namespace DataAccessLibrary
                 Phone = phone,
                 Address = address,
                 Zip = zip,
-                Country = country
+                Country = country,
+                NidNo = nidNo,
+                PassportNo = passportNo
             };
 
             string sql = $"INSERT INTO {userDatabase}.identities_table (Name, Title, FirstName, LastName, " +
-                $"Username, Company, LicenseNumber, Email, Phone, Address, Zip, Country) " +
+                $"Username, Company, LicenseNumber, Email, Phone, Address, Zip, Country, NidNo, PassportNo) " +
                 $"VALUES (@Name, @Title, @FirstName, @LastName, @Username, @Company, @LicenseNumber, @Email, " +
-                $"@Phone, @Address, @Zip, @Country);";
+                $"@Phone, @Address, @Zip, @Country, @NidNo, @PassportNo);";
 
             db.SaveData(sql, data, _connectionString);
         }
@@ -405,9 +409,8 @@ namespace DataAccessLibrary
         // Get all items from identities_table
         public List<IdentitiesModel> GetIdentities(string userDatabase)
         {
-            string sql = $"SELECT Name, Title, FirstName, LastName, Username, Company, LicenseNumber, Email, " +
-                $"Phone, Address, Zip, Country " +
-                $"FROM {userDatabase}.identities_table";
+            string sql = $"SELECT Name, Title, FirstName, LastName, Username, Company, LicenseNumber, Email, Phone, " +
+                $"Address, Zip, Country, NidNo, PassportNo FROM {userDatabase}.identities_table";
 
             try
             {
@@ -428,28 +431,28 @@ namespace DataAccessLibrary
         }
 
         // Update an item in identities_table
-        public void UpdateIdentity(int id, string name, string title, string firstName, string lastName, 
-                       string username, string company, byte[] licenseNumber, string email, byte[] phone, byte[] address,
-                                  byte[] zip, string country, string userDatabase)
+        public void UpdateIdentity(int id, string name, string title, string firstName, string lastName, string username, string company, byte[] licenseNumber, string email, byte[] phone, byte[] address, byte[] zip, string country, byte[] nidNo, byte[] passportNo, string userDatabase)
         {
-            string sql = $"UPDATE {userDatabase}.identities_table SET Name = @Name, Title = @Title, " +
-                $"FirstName = @FirstName, LastName = @LastName, Username = @Username, Company = @Company, " +
-                $"LicenseNumber = @LicenseNumber, Email = @Email, Phone = @Phone, Address = @Address, Zip = @Zip, " +
-                $"Country = @Country WHERE Id = @Id";
+            string sql = $"UPDATE {userDatabase}.identities_table SET Name = @Name, Title = @Title, FirstName = @FirstName, " +
+                $"LastName = @LastName, Username = @Username, Company = @Company, LicenseNumber = @LicenseNumber, " +
+                $"Email = @Email, " +
+                $"Phone = @Phone, Address = @Address, Zip = @Zip, Country = @Country, NidNo = @NidNo, " +
+                $"PassportNo = @PassportNo WHERE Id = @Id";
 
             db.SaveData(sql, new { Id = id, Name = name, Title = title, FirstName = firstName, LastName = lastName, 
-                           Username = username, Company = company, LicenseNumber = licenseNumber, Email = email, Phone = phone, 
-                           Address = address, Zip = zip, Country = country }, _connectionString);
+                Username = username, Company = company, LicenseNumber = licenseNumber, Email = email, 
+                Phone = phone, Address = address, Zip = zip, Country = country, NidNo = nidNo, 
+                PassportNo = passportNo }, _connectionString);
         }
 
-        // Get id from identities_table by Name and Username
-        public int GetIdentityId(string name, string username, string userDatabase)
+        // Get id from identities_table by Name
+        public int GetIdentityId(string name, string userDatabase)
         {
-            string sql = $"SELECT Id FROM {userDatabase}.identities_table WHERE Name = @Name AND Username = @Username";
+            string sql = $"SELECT Id FROM {userDatabase}.identities_table WHERE Name = @Name";
 
             try
             {
-                var data = db.LoadData<IdentitiesModel, dynamic>(sql, new { Name = name, Username = username }, _connectionString).First();
+                var data = db.LoadData<IdentitiesModel, dynamic>(sql, new { Name = name }, _connectionString).First();
 
                 return data.Id;
             }
